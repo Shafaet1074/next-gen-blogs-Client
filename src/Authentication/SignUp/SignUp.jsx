@@ -1,9 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/Mobile-login-Cristina-removebg-preview.png'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../Firbease/FirebaseProvider';
 
 const SignUp = () => {
+  const [error,setError]=useState('')
   const { SignUpUser,updateUserProfile} =useContext(AuthContext)
   const navigate =useNavigate();
 	const location =useLocation();
@@ -15,7 +16,25 @@ const SignUp = () => {
 		const password=e.target.Password.value;
 		const photoUrl=e.target.photoUrl.value;
 		const name=e.target.name.value;
-		
+		if(password.length<6){
+      setError('Password must be 6 character')
+      return
+    }
+    const regexCapitalLet =/^(?=.*[a-z\d\s\W])(?!.*[A-Z]).{6,}$/;
+    if(!regexCapitalLet.test(password)){
+      setError( 'Do not have a capital letter')
+      return
+    }
+    const regexSpecialLet =/^(?!.*[\W_])(?=.*[a-zA-Z\d]).{6,}$/;
+    if(!regexSpecialLet.test(password)){
+      setError( 'Do not use special letter')
+      return
+    }
+    const regexNumeric =/^[^\d]*$/;
+    if(!regexNumeric.test(password)){
+      setError( 'Do not use nummeric character')
+      return
+    }
 		console.log(email,password,name,photoUrl);
     SignUpUser(email,password)
     .then(result=>{
@@ -58,6 +77,9 @@ const SignUp = () => {
 			<input type="password" name="Password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
 			
 		</div>
+    {
+        error && <small className="text-red-600">{error}</small>
+       }
 		<div className="space-y-1 text-sm">
 			<label  className="block text-xl dark:text-gray-600">PhotoURL</label>
 			<input type="text" name="photoUrl" id="password" placeholder="PhotoURL" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />

@@ -16,6 +16,7 @@ import Wishlists from './Pages/WishLists/Wishlists';
 import LogIn from './Authentication/LogIn/LogIn';
 import SignUp from './Authentication/SignUp/SignUp';
 import FirebaseProvider from './Firbease/FirebaseProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/wishlists',
-        element:<Wishlists></Wishlists>
+        element:<PrivateRoute><Wishlists></Wishlists></PrivateRoute>
       },
       {
         path:'/login',
