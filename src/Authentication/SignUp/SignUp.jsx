@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/Mobile-login-Cristina-removebg-preview.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../Firbease/FirebaseProvider';
 
 const SignUp = () => {
   const { SignUpUser,updateUserProfile} =useContext(AuthContext)
+  const navigate =useNavigate();
+	const location =useLocation();
+	const from= location?.state || "/";
   const handleSignup = e =>{
     e.preventDefault();
 		const form=e.target;
@@ -22,6 +25,7 @@ const SignUp = () => {
 
       })
       console.log(result.user);
+      navigate(from);  
       alert('Sigup Successfully')
 
     })
