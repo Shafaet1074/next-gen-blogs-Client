@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/loogin.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../Firbease/FirebaseProvider';
@@ -7,6 +7,11 @@ import { AuthContext } from '../../Firbease/FirebaseProvider';
 
 const LogIn = () => {
    const {LoginUser,googleLogIn} =useContext(AuthContext);
+   const navigate =useNavigate();
+	const location =useLocation();
+  console.log(location);
+	const from= location?.state || "/";
+  console.log(from);
    const handleLogin = e =>{
 		e.preventDefault();
 		const form=e.target;
@@ -16,6 +21,7 @@ const LogIn = () => {
     LoginUser(email,password)
 		.then(result =>{
 			alert('Log in Done');
+      navigate(from); 
 		})
 		.catch(error=>{
 			alert(error.message)

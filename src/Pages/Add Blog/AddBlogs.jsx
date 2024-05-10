@@ -34,7 +34,7 @@ const AddBlogs = () => {
             icon: "success",
             title: "Success!",
             showConfirmButton: "Cool",
-            text:"Paintings Added Successfully"
+            text:"Blogs Added Successfully"
           });
         }
       })

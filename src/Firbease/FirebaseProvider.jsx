@@ -39,7 +39,7 @@ const FirebaseProvider = ({children}) => {
     
     signOut(auth)
     .then(()=>{
-      toast.success('log Out Done')
+      alert('log Out Done')
     })
   }
 

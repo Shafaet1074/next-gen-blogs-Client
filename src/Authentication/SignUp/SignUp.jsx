@@ -8,6 +8,7 @@ const SignUp = () => {
   const { SignUpUser,updateUserProfile} =useContext(AuthContext)
   const navigate =useNavigate();
 	const location =useLocation();
+  console.log(location);
 	const from= location?.state || "/";
   const handleSignup = e =>{
     e.preventDefault();
