@@ -22,6 +22,7 @@ import {
   QueryClientProvider,
 
 } from '@tanstack/react-query'
+import MyBlogs from './Pages/MyBlogs/MyBlogs';
 
 
 
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       {
         path:'/allblogs',
         element:<AllBlogs></AllBlogs>,
-        loader: () => fetch('http://localhost:5004/addblogs')
+        // loader: () => fetch('http://localhost:5004/addblogs')
       },
       {
         path:'/featuredblogs',
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path:'/signup',
         element:<SignUp></SignUp>
+      },
+      {
+        path:'myblogs',
+        element:<PrivateRoute><MyBlogs></MyBlogs></PrivateRoute>
       }
     ]
   },

@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AllBlogHome from "./AllBlogHome";
 import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../../Firbease/FirebaseProvider";
 
 
 const AllBlogsHome = () => {
   // const [blogs,setBlogs]=useState([])
-
+  const {user} =useContext(AuthContext) || {};
   // useEffect(() =>{
   //   fetch('http://localhost:5004/addblogs')
   //   .then(res=>res.json())
@@ -29,6 +30,7 @@ const AllBlogsHome = () => {
         blogs?.slice(0,6)?.map(blog=><AllBlogHome
         key={blog._id}
         blog={blog}
+        email={user?.email}
         
         ></AllBlogHome>)
       }

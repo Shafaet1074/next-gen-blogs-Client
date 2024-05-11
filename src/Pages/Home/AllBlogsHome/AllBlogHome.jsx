@@ -1,8 +1,48 @@
 import { MdOutlineCategory } from "react-icons/md";
 import { IoPersonSharp } from "react-icons/io5";
+import {  useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../Firbease/FirebaseProvider";
+
 
 const AllBlogHome = ({blog}) => {
-  const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription}=blog
+  const {user} =useContext(AuthContext) || {};
+  const email=user?.email;
+    
+
+  const [items,setItem] =useState();
+
+  const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,_id}=blog
+  
+  console.log(blog);
+  
+  // console.log(email);
+  const handleWishList = (email) =>{
+
+    
+    
+          
+    fetch(`http://localhost:5004/wishblogs/${email}`,{
+      method: 'POST',
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body:JSON.stringify(blog)
+    })
+    .then(res=>res.json())
+    .then(data =>{
+      console.log(data);
+      if(data.insertedId){
+        Swal.fire({
+          
+          icon: "success",
+          title: "Success!",
+          showConfirmButton: "Cool",
+          text:"Paintings Added Successfully"
+        });
+      }
+    })
+  }
   return (
 <div className="md:p-20 p-5">
 <div className="diff aspect-[16/9]">
@@ -38,6 +78,10 @@ const AllBlogHome = ({blog}) => {
   <div className="diff-resizer"></div>
 </div>
 <button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button>
+<button  onClick={()=>handleWishList(email)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
+
+
+
 </div>
   );
 };
