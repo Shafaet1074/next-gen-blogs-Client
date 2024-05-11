@@ -9,30 +9,9 @@ const MyBlog = ({blog}) => {
   
   const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,_id,email}=blog
 
-  console.log(blog);
+ 
   
-  const handleWishList=(email)=>{
-    fetch(`http://localhost:5004/wishblogs`,{
-      method: 'POST',
-      headers:{
-        'content-type' : 'application/json'
-      },
-      body:JSON.stringify(blog)
-    })
-    .then(res=>res.json())
-    .then(data =>{
-      console.log(data);
-      if(data.insertedId){
-        Swal.fire({
-          
-          icon: "success",
-          title: "Success!",
-          showConfirmButton: "Cool",
-          text:"Blogs Added Successfully"
-        });
-      }
-    })
-  }
+
 
 
   
@@ -60,11 +39,7 @@ const MyBlog = ({blog}) => {
 	</div>
 </div>
 <div className="w-1/5 bg-green-400 py-10 px-4 space-y-6 flex flex-col justify-center font-extralight text-pretty">
- <button onClick={()=>handleWishList(email)} className="flex gap-2 px-2 py-2 items-center bg-emerald-700 hover:bg-emerald-800   rounded-md text-white">
- <SiWish />
-  AddWishLists
 
- </button>
  <button className="flex gap-2 px-2 py-2 items-center bg-emerald-700 hover:bg-emerald-800        rounded-md text-white">
  <MdEdit />
   Update 
