@@ -1,10 +1,17 @@
 import { useLoaderData } from "react-router-dom";
 import img from '../../assets/blogALif.png'
 import Allblog from "./Allblog";
+import { useQuery } from "@tanstack/react-query";
 
 
 const AllBlogs = () => {
-  const blogs =useLoaderData();
+  const {data:blogs} =useQuery({
+    queryKey:['users'],
+    queryFn: async()=>{
+      const res = await fetch('http://localhost:5004/addblogs');
+      return res.json();
+    }
+  })
   return (
     <div className="space-y-5">
       <img className="mx-auto mt-10 " src={img} alt="" />

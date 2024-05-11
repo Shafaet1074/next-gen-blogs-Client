@@ -5,8 +5,8 @@ import { IoPersonSharp } from "react-icons/io5";
 const Allblog = ({blog}) => {
   const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription}=blog
   return (
-   <div className="p-20">
-    <section className="text-black">
+   <div className="p-20 ">
+    <section className="text-black rounded-xl p-10">
 	<div className="">
 		<div className=" " >
       <img className="w-full" src={PhotoURL} alt="" />
