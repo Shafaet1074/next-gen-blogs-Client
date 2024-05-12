@@ -7,27 +7,30 @@ import { AuthContext } from "../../../Firbease/FirebaseProvider";
 
 const AllBlogHome = ({blog}) => {
   const {user} =useContext(AuthContext) || {};
-  const email=user?.email;
+  const userEmail=user?.email;
     
 
   const [items,setItem] =useState();
 
   const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,_id}=blog
   
-  console.log(blog);
-  
   // console.log(email);
-  const handleWishList = (email) =>{
+  
+  // console.log(blog);
+  const modifiedBlog = { ...blog, userEmail };
+  
+   console.log(modifiedBlog);
+  const handleWishList = (userEmail) =>{
 
     
     
           
-    fetch(`http://localhost:5004/wishblogs/${email}`,{
+    fetch(`http://localhost:5004/wishblogs/${userEmail}`,{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'
       },
-      body:JSON.stringify(blog)
+      body:JSON.stringify(modifiedBlog)
     })
     .then(res=>res.json())
     .then(data =>{
@@ -78,7 +81,7 @@ const AllBlogHome = ({blog}) => {
   <div className="diff-resizer"></div>
 </div>
 <button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button>
-<button  onClick={()=>handleWishList(email)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
+<button  onClick={()=>handleWishList(userEmail)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
 
 
 

@@ -20,6 +20,10 @@ const AllBlogsHome = () => {
       return res.json();
     }
   })
+
+
+
+ 
   
   return (
     <div className="space-y-5">
