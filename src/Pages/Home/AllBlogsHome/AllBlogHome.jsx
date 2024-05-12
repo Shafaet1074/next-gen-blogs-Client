@@ -3,6 +3,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import {  useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Firbease/FirebaseProvider";
+import { Link } from "react-router-dom";
 
 
 const AllBlogHome = ({blog}) => {
@@ -80,7 +81,7 @@ const AllBlogHome = ({blog}) => {
   </div>
   <div className="diff-resizer"></div>
 </div>
-<button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button>
+<Link to={`/allblogs/${_id}`}><button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button></Link>
 <button  onClick={()=>handleWishList(userEmail)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
 
 

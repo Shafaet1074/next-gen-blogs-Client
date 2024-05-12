@@ -15,8 +15,9 @@ const AddBlogs = () => {
       const ShortDescription=form.ShortDescription.value;
       const PhotoURL=form.PhotoURL.value;
       const LongDescription=form.LongDescription.value;
-      const email=user.email;
-      const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,email}
+      const OwnerPhotoURL=form.OwnerPhotoURL.value;
+      
+      const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL}
       console.log(info);
       fetch('http://localhost:5004/addblogs',{
         method: 'POST',
@@ -103,14 +104,26 @@ const AddBlogs = () => {
 <input type="text" name="ShortDescription" className="input input-bordered w-full " placeholder="Short Description" />
 </label>
     </div>
+    
     </div>
+    <div className="md:w-full">
+     <label className="label">
+     <span className="label-text text-xl">Owner PhotoURL</span>
+     </label>
+    <label className="flex items-center gap-2">
+
+<input type="text" name="OwnerPhotoURL" className="input input-bordered w-full " placeholder="Owner PhotoURL" />
+</label>
+    </div>
+
+    
 
 
      {/* form  photo url row */}
      <div className="mb-8">
     <div className="md:w-full">
      <label className="label">
-     <span className="label-text text-xl">Photo URL </span>
+     <span className="label-text text-xl"> Photo URL </span>
      </label>
     <label className="flex items-center gap-2">
 

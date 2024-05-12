@@ -23,6 +23,7 @@ import {
 
 } from '@tanstack/react-query'
 import MyBlogs from './Pages/MyBlogs/MyBlogs';
+import BlogDetails from './Pages/BlogDetails/BlogDetails';
 
 
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element:<LogIn></LogIn>
+      },
+      {
+        path:'/allblogs/:id',
+        element:<BlogDetails></BlogDetails>
       },
       {
         path:'/signup',

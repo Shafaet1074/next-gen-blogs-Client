@@ -1,60 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { useTable, useSortBy} from 'react-table';
-import axios from 'axios';
+import { useTable, useSortBy } from 'react-table';
 
 const FeaturedBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
+  const [topPosts, setTopPosts] = useState([]);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get('http://localhost:5004/addblogs');
-        setBlogs(response.data);
-      } catch (error) {
-        console.error('Error fetching blogs:', error);
-      }
-    };
-
-    fetchBlogs();
+    // Fetch top posts data from the server
+    fetch('http://localhost:5004/topposts')
+      .then(response => response.json())
+      .then(posts => {
+        // Sort posts based on word count of LongDescription in descending order
+        const sortedPosts = posts.sort((a, b) => {
+          const wordCountA = a.LongDescription.split(/\s+/).length;
+          const wordCountB = b.LongDescription.split(/\s+/).length;
+          return wordCountB - wordCountA;
+        });
+        // Slice the top 10 posts
+        const topTenPosts = sortedPosts.slice(0, 10);
+        setTopPosts(topTenPosts);
+      })
+      .catch(error => console.error('Error fetching top posts:', error));
   }, []);
 
+  // Define columns for ReactTable
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Serial Number',
-        accessor: 'serialNumber',
+        Header: 'Serial No.',
+        accessor: 'serialNumber' // Custom accessor for serial number
       },
       {
-        Header: 'Blog Title',
-        accessor: 'Title',
+        Header: 'Title',
+        accessor: 'Title'
       },
       {
         Header: 'Blog Owner',
-        accessor: 'OwnnerName',
+        accessor: 'OwnnerName'
       },
       {
-        Header: 'Blog Owner Profile Picture',
-        accessor: 'ownerProfilePicture',
-      },
+        Header: 'Profile Picture',
+        accessor: 'OwnerPhotoURL',
+        Cell: ({ row }) => (
+          <img src={row.original.OwnerPhotoURL} alt="Profile" className="w-10 h-10 rounded-full" />
+        )
+      }
     ],
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
-    { columns, data: blogs },
-    useSortBy
+  // Map over top posts and add serial numbers
+  const data = React.useMemo(
+    () =>
+      topPosts.map((post, index) => ({
+        ...post,
+        serialNumber: index + 1
+      })),
+    [topPosts]
   );
+
+  // Create a ReactTable instance with sorting functionality
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow
+  } = useTable({ columns, data }, useSortBy);
+
   return (
-    <div className="container md:mx-auto p-2 md:p-10">
-      <table className="table-auto md:min-w-full" {...getTableProps()}>
-        <thead>
+    <div className="container mx-auto md:p-10 px-2">
+      <h1 className="text-2xl font-bold my-4">Top 10 Feature Blogs</h1>
+      <table {...getTableProps()} className="table-auto w-1/2 border-collapse border border-gray-800">
+        <thead className="bg-gray-200">
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
                 <th
-                  key={column.id}
-                  className="md:px-4  md:py-2 py-1 bg-green-400 text-gray-700 font-semibold text-sm cursor-pointer"
                   {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className="md:px-4 md:py-2 px-2 py-1 text-left font-semibold text-gray-800 border border-gray-800 cursor-pointer"
                 >
                   {column.render('Header')}
                   <span>
@@ -65,22 +88,19 @@ const FeaturedBlogs = () => {
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
+        <tbody {...getTableBodyProps()} className="divide-y divide-gray-800">
           {rows.map(row => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <td
-                      key={cell.row.index}
-                      className="border px-4 py-2"
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
+              <tr {...row.getRowProps()} className="hover:bg-gray-100">
+                {row.cells.map(cell => (
+                  <td
+                    {...cell.getCellProps()}
+                    className="px-4 py-2 text-sm border border-gray-800"
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                ))}
               </tr>
             );
           })}
