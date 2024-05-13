@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         element:<LogIn></LogIn>
       },
       {
-        path:'/allblogs/:id',
+        path:'/blogdetail/:id',
         element:<BlogDetails></BlogDetails>
       },
       {
@@ -73,6 +73,7 @@ const router = createBrowserRouter([
         path:'myblogs',
         element:<PrivateRoute><MyBlogs></MyBlogs></PrivateRoute>
       }
+    
     ]
   },
 ]);

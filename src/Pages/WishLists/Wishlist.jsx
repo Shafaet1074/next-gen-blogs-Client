@@ -1,9 +1,50 @@
+import { Link } from "react-router-dom";
 
 
 const Wishlist = ({blog}) => {
   const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,_id,email}=blog
-  
+  const [control,setControl] =useState(false);
 
+  const handleDelete = (id) =>{
+
+  
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+        fetch(`http://localhost:5004/delete/${id}`,{
+      method:"DELETE",
+    })
+    .then((res)=> res.json())
+    .then((data)=>{
+      if(data.deletedCount> 0){
+        Swal.fire(
+          "Deleted!",
+          "Your coffee has been deleted.",
+          "success"
+  )
+             setControl(!control)
+      }
+    })
+        console.log('Delete Confirmed');
+    
+      }
+    });
+  
+  
+  
+  
+  
+  
+  }
+   
   return (
     <div>
       <div className="p-5 mx-auto sm:p-10 md:p-16 dark:bg-gray-100 dark:text-gray-800">
@@ -20,8 +61,8 @@ const Wishlist = ({blog}) => {
 				<p>{ShortDescription}</p>
 			</div>
       <div className="flex gap-2">
-      <button className="px-2 py-2 text-2xl font-bold w-1/2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">Read More</button>
-      <button className="px-2 py-2 text-2xl font-bold w-1/2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">Delete</button>
+      
+      <button onClick={()=>handleDelete(_id)} className="px-2 py-2 text-2xl font-bold w-1/2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800">Delete</button>
       </div>
 		</div>
 	</div>

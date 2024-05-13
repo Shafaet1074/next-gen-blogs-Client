@@ -42,7 +42,7 @@ const AllBlogHome = ({blog}) => {
           icon: "success",
           title: "Success!",
           showConfirmButton: "Cool",
-          text:"Paintings Added Successfully"
+          text:" Added to WishList Successfully"
         });
       }
     })
@@ -81,7 +81,7 @@ const AllBlogHome = ({blog}) => {
   </div>
   <div className="diff-resizer"></div>
 </div>
-<Link to={`/allblogs/${_id}`}><button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button></Link>
+<Link to={`/blogdetail/${_id}`}><button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button></Link>
 <button  onClick={()=>handleWishList(userEmail)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
 
 

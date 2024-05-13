@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 const AddBlogs = () => {
   const {user} =useContext(AuthContext) || {};
   
+
+  
   const handleAddBlogs = (e) => {
     e.preventDefault();
       const form=e.target
@@ -16,8 +18,11 @@ const AddBlogs = () => {
       const PhotoURL=form.PhotoURL.value;
       const LongDescription=form.LongDescription.value;
       const OwnerPhotoURL=form.OwnerPhotoURL.value;
+      const writerEmail=user?.email
+
       
-      const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL}
+      const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL,writerEmail}
+      console.log(info);
       console.log(info);
       fetch('http://localhost:5004/addblogs',{
         method: 'POST',
