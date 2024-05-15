@@ -158,7 +158,7 @@ const UpdateBlogs = () => {
     </div>
     
     
-    <input type="submit" value="Add Paintings"  className="btn btn-block bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white mt-5"/>
+    <input type="submit" value="Update Blogs"  className="btn btn-block bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white mt-5"/>
 
    </form>
  </div>

@@ -103,6 +103,7 @@ const AddBlogs = () => {
 <option value="Entertainment"></option>
 <option value="Sports"></option>
 <option value="InterNational Affairs"></option>
+<option value="Fashion & Outlook"></option>
 
 </datalist>
 </label>
@@ -160,7 +161,7 @@ const AddBlogs = () => {
     </div>
     
     
-    <input type="submit" value="Add Paintings"  className="btn btn-block bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white mt-5"/>
+    <input type="submit" value="Add Blogs"  className="btn btn-block bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white mt-5"/>
 
    </form>
  </div>
