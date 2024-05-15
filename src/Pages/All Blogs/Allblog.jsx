@@ -10,14 +10,14 @@ const Allblog = ({blog}) => {
   const {Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,_id}=blog
   const {user} =useContext(AuthContext) || {};
   const userEmail=user?.email;
-  const [items,setItem] =useState();
+  // const [items,setItem] =useState();
   const modifiedBlog = { ...blog, userEmail };
   const handleWishList = (userEmail) =>{
 
     
     
           
-    fetch(`http://localhost:5004/wishblogs/${userEmail}`,{
+    fetch(`https://nextgen-blogs.vercel.app/wishblogs/${userEmail}`,{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'

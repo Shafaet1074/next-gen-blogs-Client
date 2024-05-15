@@ -7,12 +7,12 @@ import Wishlist from "./Wishlist";
 
 const Wishlists = () => {
   const {user} =useContext(AuthContext) || {};
-  console.log(user);
-  console.log(user.email);
+  // console.log(user);
+  // console.log(user.email);
   const {data:blogs,isLoading, isError} =useQuery({
     queryKey:['users'],
     queryFn: async()=>{
-      const res = await fetch(`http://localhost:5004/wishblogs/${user?.email}`,{credentials:'include'});
+      const res = await fetch(`https://nextgen-blogs.vercel.app/wishblogs/${user?.email}`,{credentials:'include'});
       return res.json();
     },
     

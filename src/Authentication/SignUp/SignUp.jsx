@@ -36,7 +36,7 @@ const SignUp = () => {
       setError( 'Do not use nummeric character')
       return
     }
-		console.log(email,password,name,photoUrl);
+		// console.log(email,password,name,photoUrl);
     SignUpUser(email,password)
     .then(result=>{
       updateUserProfile(name,photoUrl)
@@ -44,7 +44,7 @@ const SignUp = () => {
       .then(()=>{
 
       })
-      console.log(result.user);
+      // console.log(result.user);
       navigate(from);  
       alert('Sigup Successfully')
 

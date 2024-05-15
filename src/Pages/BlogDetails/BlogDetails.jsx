@@ -19,7 +19,7 @@ const BlogDetails = () => {
     queryKey: ['usersDetails'],  
     queryFn: async () => {
       try {
-        const response = await axios.get(`http://localhost:5004/blogdetails/id/${id}`, {
+        const response = await axios.get(`https://nextgen-blogs.vercel.app/blogdetails/id/${id}`, {
           withCredentials: true 
         });
         return response.data;
@@ -34,7 +34,7 @@ const BlogDetails = () => {
 
   useEffect(() => {
     if (blog) {
-      fetch(`http://localhost:5004/addcomment/${id}`)
+      fetch(`https://nextgen-blogs.vercel.app/addcomment/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setComments(data);
@@ -54,7 +54,7 @@ const BlogDetails = () => {
     const Comment = form.userComment.value;
     const info = { UserName, BlogID, Comment, UserPhoto };
 
-    fetch(`http://localhost:5004/addcomment/${BlogID}`, {
+    fetch(`https://nextgen-blogs.vercel.app/addcomment/${BlogID}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

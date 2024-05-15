@@ -14,7 +14,7 @@ const AllBlogs = () => {
   const { data: blogs } = useQuery({
     queryKey: ['usersAllblogs'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5004/addblogs');
+      const res = await fetch('https://nextgen-blogs.vercel.app/addblogs');
       return res.json();
     }
   });
@@ -24,7 +24,7 @@ const AllBlogs = () => {
   });
 
   const handleWishList = (userEmail, blog) => {
-    fetch(`http://localhost:5004/wishblogs/${userEmail}`, {
+    fetch(`https://nextgen-blogs.vercel.app/wishblogs/${userEmail}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -26,14 +26,14 @@ const AddBlogs = () => {
       const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL,writerEmail}
       console.log(info);
       console.log(info);
-      // fetch('http://localhost:5004/addblogs',{
+      // fetch('https://nextgen-blogs.vercel.app/addblogs',{
       //   method: 'POST',
       //   headers:{
       //     'content-type' : 'application/json'
       //   },
       //   body:JSON.stringify(info)
       // })
-      axios.post('http://localhost:5004/addblogs', info ,{withCredentials: true})
+      axios.post('https://nextgen-blogs.vercel.app/addblogs', info ,{withCredentials: true})
       .then(res => {
         console.log(res.data);
         if (res.data.insertedId) {

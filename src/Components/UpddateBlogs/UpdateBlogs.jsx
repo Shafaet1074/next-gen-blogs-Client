@@ -8,7 +8,7 @@ const UpdateBlogs = () => {
   const {data:updatedblogs} =useQuery({
     queryKey:['Updateusers'],
     queryFn: async()=>{
-      const res = await fetch(`http://localhost:5004/updateblogs/id/${id}`,{credentials:'include'});
+      const res = await fetch(`https://nextgen-blogs.vercel.app/updateblogs/id/${id}`,{credentials:'include'});
       return res.json();
     }
   })
@@ -29,7 +29,7 @@ const UpdateBlogs = () => {
     
     const Updatedinfo={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL}
 
-    fetch(`http://localhost:5004/updateblogs/id/${id}`,{
+    fetch(`https://nextgen-blogs.vercel.app/updateblogs/id/${id}`,{
       method:'PUT',
       headers:{
         'content-type' : 'application/json'

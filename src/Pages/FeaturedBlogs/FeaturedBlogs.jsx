@@ -6,7 +6,7 @@ const FeaturedBlogs = () => {
 
   useEffect(() => {
     // Fetch top posts data from the server
-    fetch('http://localhost:5004/topposts')
+    fetch('https://nextgen-blogs.vercel.app/topposts')
       .then(response => response.json())
       .then(posts => {
         // Sort posts based on word count of LongDescription in descending order

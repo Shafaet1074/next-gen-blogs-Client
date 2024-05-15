@@ -8,7 +8,7 @@ const AllBlogsHome = () => {
   // const [blogs,setBlogs]=useState([])
   const {user} =useContext(AuthContext) || {};
   // useEffect(() =>{
-  //   fetch('http://localhost:5004/addblogs')
+  //   fetch('https://nextgen-blogs.vercel.app/addblogs')
   //   .then(res=>res.json())
   //   .then(data=>setBlogs(data))
   // {credentials:'include'}
@@ -16,7 +16,7 @@ const AllBlogsHome = () => {
   const {data:blogs} =useQuery({
     queryKey:['usersHome'],
     queryFn: async()=>{
-      const res = await fetch('http://localhost:5004/addblogs');
+      const res = await fetch('https://nextgen-blogs.vercel.app/addblogs');
       return res.json();
     }
   })

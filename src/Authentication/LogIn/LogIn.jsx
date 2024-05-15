@@ -18,18 +18,18 @@ const LogIn = () => {
 		const form=e.target;
 		const email=form.email.value;
 		const password=form.password.value;
-		console.log(email,password);
+		// console.log(email,password);
     LoginUser(email,password)
 		.then(result =>{
       const LoggedInuser = result.user
-      console.log(LoggedInuser);
+      // console.log(LoggedInuser);
       const user={email};
 			
       
       // get access token
-       axios.post('http://localhost:5004/jwt', user , {withCredentials:true})
+       axios.post('https://nextgen-blogs.vercel.app/jwt', user , {withCredentials:true})
        .then(res =>{
-        console.log(res.data);
+        // console.log(res.data);
           if(res.data.success){
          navigate(location?.state? location?.state : '/'); 
           }
@@ -48,7 +48,7 @@ const LogIn = () => {
     try{
      const result = await googleLogIn()
      
-     const {data} = await axios.post('http://localhost:5004/jwt',{
+     const {data} = await axios.post('https://nextgen-blogs.vercel.app/jwt',{
       email: result?.user?.email,
      },{withCredentials:true})
      console.log(data);

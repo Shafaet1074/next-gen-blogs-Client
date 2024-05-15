@@ -26,7 +26,7 @@ const AllBlogHome = ({blog}) => {
     
     
           
-    fetch(`http://localhost:5004/wishblogs/${userEmail}`,{
+    fetch(`https://nextgen-blogs.vercel.app/wishblogs/${userEmail}`,{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'

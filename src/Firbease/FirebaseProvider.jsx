@@ -43,8 +43,8 @@ const FirebaseProvider = ({children}) => {
     setLoading(true);
 
     setUser(null)
-   const {data}= await axios('http://localhost:5004/logout',{withCredentials:true})
-   console.log(data);
+   const {data}= await axios('https://nextgen-blogs.vercel.app/logout',{withCredentials:true})
+  //  console.log(data);
     
     signOut(auth)
     .then(()=>{
@@ -61,18 +61,33 @@ const FirebaseProvider = ({children}) => {
     }
 
   //Observer
-  useEffect(()=>{
-    const unsubscribe=onAuthStateChanged(auth, (user) => {
-      if (user) {
-         setUser(user)
-         
-      } 
-      setLoading(false);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    const userEmail = currentUser?.email || user?.email;
+    const loggedUser = { email: userEmail };
+    setUser(currentUser);
+    console.log('current user', currentUser);
+    setLoading(false);
+    // if user exists then issue a token
+    if (currentUser?.email) {
+    axios.post('https://nextgen-blogs.vercel.app/jwt', loggedUser, { withCredentials: true })
+    .then(res => {
+    console.log('token response', res.data);
+    })
+    }
+    else {
+    axios.post('https://nextgen-blogs.vercel.app/logout', loggedUser, {
+    withCredentials: true
+    })
+    .then(res => {
+    console.log(res.data);
+    })
+    }
     });
-
-    return ()=> unsubscribe();
-    
-  },[])
+    return () => {
+    return unsubscribe();
+    }
+    }, [])
 
   const userInfo={
    SignUpUser,

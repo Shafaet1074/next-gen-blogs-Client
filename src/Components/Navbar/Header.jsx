@@ -6,8 +6,8 @@ import { AuthContext } from "../../Firbease/FirebaseProvider";
 
 const Header = () => {
   const {LogOut,user} = useContext(AuthContext)
-  console.log(user);
-  console.log(user?.photoURL)
+  // console.log(user);
+  // console.log(user?.photoURL)
   return (
     
     // "
@@ -53,7 +53,7 @@ const Header = () => {
       <Navbar.Collapse>
       <NavLink to='/' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>Home</a></li></NavLink>
       <NavLink to='/addblogs' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>Add Blog</a></li></NavLink>
-      <NavLink to='/allblogs' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>AllBlogs</a></li></NavLink>
+      <NavLink to='AllBlogs' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>AllBlogs</a></li></NavLink>
       <NavLink to='/featuredblogs' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>Featured Blogs</a></li></NavLink>
       <NavLink to='/MyBlogs' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>My Blogs</a></li></NavLink>
       <NavLink to='/wishlists' className={({isActive})=> isActive?' border-2 border-emerald-800 px-2 py-1  font-bold   text-xl rounded-lg' : 'font-bold text-xl text-green-950 '}><li><a>Wish Lists</a></li></NavLink>
