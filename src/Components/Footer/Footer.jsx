@@ -36,13 +36,16 @@ const Footer = () => {
         <Link to='/'>	<a rel="noopener noreferrer" href="#">Home</a></Link>
         </li>
         <li>
-        <Link to='/allPaintaings'>	<a rel="noopener noreferrer" href="#">All Paintimngs</a></Link>
+        <Link to='AllBlogs'>	<a rel="noopener noreferrer" href="#">Add Blog</a></Link>
         </li>
         <li>
-        <Link to='/addPaintings'>	<a rel="noopener noreferrer" href="#">Add Paintings</a></Link>
+        <Link to='/addPaintings'>	<a rel="noopener noreferrer" href="#">AllBlogs</a></Link>
         </li>
         <li>
-        <Link to='/myArts'>	<a rel="noopener noreferrer" href="#">My Arts</a></Link>
+        <Link to='/MyBlogs'>	<a rel="noopener noreferrer" href="#">My Blogs</a></Link>
+        </li>
+        <li>
+        <Link to='/wishlists'>	<a rel="noopener noreferrer" href="#">Wish Lists</a></Link>
         </li>
        
        
