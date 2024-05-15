@@ -6,7 +6,10 @@ import axios from "axios";
 
 
 export const AuthContext= createContext(null)
-const googleProvider = new GoogleAuthProvider();
+var provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account'
+});
 
 
 const FirebaseProvider = ({children}) => {
@@ -29,8 +32,8 @@ const FirebaseProvider = ({children}) => {
    //google Login
    const googleLogIn =() =>{
   
-    
-        return signInWithPopup(auth,googleProvider)
+        setLoading(true);
+        return signInWithPopup(auth,provider)
        
        
   }

@@ -7,13 +7,14 @@ import { AuthContext } from "../../Firbease/FirebaseProvider";
 const Header = () => {
   const {LogOut,user} = useContext(AuthContext)
   console.log(user);
+  console.log(user?.photoURL)
   return (
     
     // "
         <Navbar className="bg-slate-100  shadow-emerald-400 shadow-xl">
       <Navbar.Brand href="https://flowbite-react.com">
         
-        <span className="self-center whitespace-nowrap text-2xl font-semibold px-2 py-1 bg-gradient-to-r from-green-600 via-green-400 to-emerald-900 text-white rounded-lg">NextGenBlogs</span>
+       <Link to='/'> <span className="self-center whitespace-nowrap text-2xl font-semibold px-2 py-1 bg-gradient-to-r from-green-600 via-green-400 to-emerald-900 text-white rounded-lg">NextGenBlogs</span></Link>
       </Navbar.Brand>
       
       <div className="flex md:order-2 gap-5">
@@ -23,6 +24,7 @@ const Header = () => {
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img alt="Tailwind CSS Navbar component" src={user?.photoURL}
+        
  />
         </div>
       </div>
