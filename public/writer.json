@@ -1,0 +1,24 @@
+[
+  {
+    "category": "Technology",
+
+    "description": " Stay ahead of the curve with our in-depth analysis and coverage of the latest technological advancements and trends.",
+    "image_url": "https://i.ibb.co/mBb7M9c/HR-GR8-technology.jpg"
+  },
+  {
+    "category": "Entertainment",
+    "description": "Delve into the world of cinema for movie lovers. Reviews, analyses, classic explorations, and independent film spotlights - it's all here..",
+    "image_url": "https://i.ibb.co/w0rJNpR/Copyright-law-and-AI.jpg"
+  },
+  {
+    "category": "InterNational Affairs",
+    "description": " Explore a diverse range of perspectives from thought leaders, analysts, and everyday citizens on pressing issues like diplomacy, trade, security, and global development. ",
+    "image_url": "https://i.ibb.co/Lx0xDjd/langues-vivantes-trang-res-1200-800.jpg"
+  },
+  {
+    "category": "Fashion $ Outlook",
+    "description": "  Stay on top of the latest trends, gain confidence in your choices, and join a vibrant community of fashion enthusiasts. ",
+    "image_url": "https://i.ibb.co/MgmvM0P/the-closets-of-fashion-bloggers-blog-benetton-1-1200x909-1.jpg"
+  }
+   
+]

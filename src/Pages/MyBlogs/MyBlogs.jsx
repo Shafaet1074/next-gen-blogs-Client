@@ -9,7 +9,7 @@ const MyBlogs = () => {
   const {data:blogs} =useQuery({
     queryKey:['users'],
     queryFn: async()=>{
-      const res = await fetch(`http://localhost:5004/addblogs/${user?.email}`);
+      const res = await fetch(`http://localhost:5004/addblogs/${user?.email}`,{credentials:"include"});
       return res.json();
     }
   })

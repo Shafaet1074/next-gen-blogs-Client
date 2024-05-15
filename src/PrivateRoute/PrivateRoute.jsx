@@ -7,6 +7,7 @@ const PrivateRoute = ({children}) => {
   
   const {user,loading}=useContext(AuthContext)
   const location =useLocation();
+  console.log(location.pathname);
   if(loading){
     return <div className="text-center flex justify-center items-center">
       <span className="justify-center text-center loading loading-bars loading-lg"></span>
@@ -15,7 +16,7 @@ const PrivateRoute = ({children}) => {
     
   }
   if(!user){
-    return <Navigate to='/login' state={location?.pathname || '/'}></Navigate>
+    return <Navigate to='/login' state={location?.pathname}></Navigate>
   }
   return (
     <div>

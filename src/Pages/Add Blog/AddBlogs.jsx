@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Firbease/FirebaseProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const AddBlogs = () => {
   const {user} =useContext(AuthContext) || {};
-  
+   
+
 
   
   const handleAddBlogs = (e) => {
@@ -24,29 +26,34 @@ const AddBlogs = () => {
       const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL,writerEmail}
       console.log(info);
       console.log(info);
-      fetch('http://localhost:5004/addblogs',{
-        method: 'POST',
-        headers:{
-          'content-type' : 'application/json'
-        },
-        body:JSON.stringify(info)
-      })
-      .then(res=>res.json())
-      .then(data =>{
-        console.log(data);
-        if(data.insertedId){
+      // fetch('http://localhost:5004/addblogs',{
+      //   method: 'POST',
+      //   headers:{
+      //     'content-type' : 'application/json'
+      //   },
+      //   body:JSON.stringify(info)
+      // })
+      axios.post('http://localhost:5004/addblogs', info ,{withCredentials: true})
+      .then(res => {
+        console.log(res.data);
+        if (res.data.insertedId) {
           Swal.fire({
-            
             icon: "success",
             title: "Success!",
             showConfirmButton: "Cool",
-            text:"Blogs Added Successfully"
+            text: "Blogs Added Successfully"
           });
         }
+        form.reset();
       })
-      form.reset();
+      .catch(error => {
+        console.error("Error occurred:", error);
+      });
 
     }
+    // .then(res=>res.json())
+      // .then(data =>{
+      //   console.log(data);
   
   
   return (

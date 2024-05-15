@@ -24,6 +24,7 @@ import {
 } from '@tanstack/react-query'
 import MyBlogs from './Pages/MyBlogs/MyBlogs';
 import BlogDetails from './Pages/BlogDetails/BlogDetails';
+import UpdateBlogs from './Components/UpddateBlogs/UpdateBlogs';
 
 
 
@@ -62,8 +63,8 @@ const router = createBrowserRouter([
         element:<LogIn></LogIn>
       },
       {
-        path:'/blogdetail/:id',
-        element:<BlogDetails></BlogDetails>
+        path:'/blogdetails/id/:id',
+        element:<PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>
       },
       {
         path:'/signup',
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path:'myblogs',
         element:<PrivateRoute><MyBlogs></MyBlogs></PrivateRoute>
+      },
+      {
+        path:'/updateBlogs/:id',
+        element:<PrivateRoute><UpdateBlogs></UpdateBlogs></PrivateRoute>
       }
     
     ]

@@ -68,44 +68,48 @@ const FeaturedBlogs = () => {
   } = useTable({ columns, data }, useSortBy);
 
   return (
-    <div className="container mx-auto md:p-10 px-2">
-      <h1 className="text-2xl font-bold my-4">Top 10 Feature Blogs</h1>
-      <table {...getTableProps()} className="table-auto w-1/2 border-collapse border border-gray-800">
-        <thead className="bg-gray-200">
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className="md:px-4 md:py-2 px-2 py-1 text-left font-semibold text-gray-800 border border-gray-800 cursor-pointer"
-                >
-                  {column.render('Header')}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                  </span>
-                </th>
+    <div className='md:p-20'>
+      <div className="container mx-auto p-10 md:p-4">
+        <h1 className="text-2xl font-bold my-4">Top 10 Feature Blogs</h1>
+        <div className="overflow-x-auto">
+          <table {...getTableProps()} className=" md:w-full w-1/4  border-collapse border border-green-700">
+            <thead className="bg-green-400 ">
+              {headerGroups.map(headerGroup => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(column => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      className="px-4 py-2  text-left font-semibold text-gray-800 border border-gray-800 cursor-pointer"
+                    >
+                      {column.render('Header')}
+                      <span>
+                        {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()} className="divide-y divide-gray-800">
-          {rows.map(row => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()} className="hover:bg-gray-100">
-                {row.cells.map(cell => (
-                  <td
-                    {...cell.getCellProps()}
-                    className="px-4 py-2 text-sm border border-gray-800"
-                  >
-                    {cell.render('Cell')}
-                  </td>
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody {...getTableBodyProps()} className="divide-y divide-green-700">
+              {rows.map(row => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()} className="hover:bg-gray-100 ">
+                    {row.cells.map(cell => (
+                      <td
+                        {...cell.getCellProps()}
+                        className="sm:px-4 sm:py-2 text-sm border border-gray-800"
+                      >
+                        {cell.render('Cell')}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

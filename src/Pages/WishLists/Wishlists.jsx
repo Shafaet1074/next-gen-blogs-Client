@@ -8,13 +8,14 @@ import Wishlist from "./Wishlist";
 const Wishlists = () => {
   const {user} =useContext(AuthContext) || {};
   console.log(user);
-  const {data:blogs,isLoading, isError, refetch } =useQuery({
+  console.log(user.email);
+  const {data:blogs,isLoading, isError} =useQuery({
     queryKey:['users'],
     queryFn: async()=>{
-      const res = await fetch(`http://localhost:5004/wishblogs/${user?.email}`);
+      const res = await fetch(`http://localhost:5004/wishblogs/${user?.email}`,{credentials:'include'});
       return res.json();
     },
-    refetchInterval: 1000,
+    
   })
  console.log(blogs);
   return (

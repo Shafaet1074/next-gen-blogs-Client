@@ -21,7 +21,7 @@ const AllBlogHome = ({blog}) => {
   const modifiedBlog = { ...blog, userEmail };
   
    console.log(modifiedBlog);
-  const handleWishList = (userEmail) =>{
+  const handleWishList = () =>{
 
     
     
@@ -81,8 +81,8 @@ const AllBlogHome = ({blog}) => {
   </div>
   <div className="diff-resizer"></div>
 </div>
-<Link to={`/blogdetail/${_id}`}><button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button></Link>
-<button  onClick={()=>handleWishList(userEmail)} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
+<Link to={`/blogdetails/id/${_id}`}><button className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Read More</button></Link>
+<button  onClick={()=>handleWishList()} className="px-2 py-2 text-2xl font-bold w-full mt-1 bg-slate-200 text-black rounded-lg hover:bg-slate-300">Wish List</button>
 
 
 

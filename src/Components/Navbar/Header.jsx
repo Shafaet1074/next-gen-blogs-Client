@@ -10,7 +10,7 @@ const Header = () => {
   return (
     
     // "
-        <Navbar className="bg-emerald-100   shadow-emerald-300 shadow-xl">
+        <Navbar className="bg-slate-100  shadow-emerald-400 shadow-xl">
       <Navbar.Brand href="https://flowbite-react.com">
         
         <span className="self-center whitespace-nowrap text-2xl font-semibold px-2 py-1 bg-gradient-to-r from-green-600 via-green-400 to-emerald-900 text-white rounded-lg">NextGenBlogs</span>

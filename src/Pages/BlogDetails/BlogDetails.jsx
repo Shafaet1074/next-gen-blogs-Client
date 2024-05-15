@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Firbease/FirebaseProvider';
 import Swal from 'sweetalert2';
-import BlogComments from './BlogComments';
-import { comment } from 'postcss';
+import { MdEdit } from "react-icons/md";
 import { GoComment } from "react-icons/go";
+import axios from 'axios';
 
 const BlogDetails = () => {
   const { user } = useContext(AuthContext) || {};
@@ -13,14 +13,23 @@ const BlogDetails = () => {
   
   const [comments, setComments] = useState([]);
   const { id } = useParams();
+  
   console.log(id);
   const { data: blog, isLoading: blogLoading, error: blogError } = useQuery({
-    queryKey: ['users'],
+    queryKey: ['usersDetails'],  
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5004/addblogs/${id}`);
-      return res.json();
+      try {
+        const response = await axios.get(`http://localhost:5004/blogdetails/id/${id}`, {
+          withCredentials: true 
+        });
+        return response.data;
+      } catch (error) {
+        console.error('Error fetching blog data:', error);
+        throw error;
+      }
     }
   });
+  
   console.log(blog);
 
   useEffect(() => {
@@ -76,8 +85,9 @@ const BlogDetails = () => {
   ;
   return (
     <section className="py-6 ">
-      {/* Existing JSX for displaying blog details */}
+  
       <div className="grid grid-cols-1 p-5 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
+        
     <div className="py-6 md:py-0 md:px-6">
       <img className='w-full' src={blog?.PhotoURL} alt="" />
     </div>
@@ -123,7 +133,16 @@ const BlogDetails = () => {
       {isBlogOwner ? (
         <div className="p-10 space-y-4">
           <h2 className="text-xl font-bold">Can not comment on own blog</h2>
+
+          <Link to={`/updateBlogs/${id}`}><button className="flex gap-2 px-2 py-2 items-center bg-emerald-700 hover:bg-emerald-800        rounded-md text-white">
+         <MdEdit />
+         Update 
+
+         </button></Link>
         </div>
+       
+       
+
       ) : (  
       <div className="p-10 space-y-4">
         <h2 className="text-xl font-bold">Add Comment</h2>
