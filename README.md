@@ -6,7 +6,7 @@ Your Project Name
 
 Your project is a platform that allows users to create, read, update, and delete blog posts. It provides functionalities for users to browse through blogs, filter them, add them to their wishlist, and interact with other users through comments.
 
-Live Link: [YourProjectName.com](http://www.yourprojectname.com)
+Live Link: https://nextgenblogs-6e55f.web.app/
 
 ## Features
 
