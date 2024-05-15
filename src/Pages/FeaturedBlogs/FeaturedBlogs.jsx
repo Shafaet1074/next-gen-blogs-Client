@@ -41,7 +41,7 @@ const FeaturedBlogs = () => {
         Header: 'Profile Picture',
         accessor: 'OwnerPhotoURL',
         Cell: ({ row }) => (
-          <img src={row.original.OwnerPhotoURL} alt="Profile" className="w-10 h-10 rounded-full" />
+          <img src={row.original?.OwnerPhotoURL} alt="Profile" className="w-10 h-10 rounded-full" />
         )
       }
     ],
