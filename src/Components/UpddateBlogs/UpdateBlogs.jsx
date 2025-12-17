@@ -12,7 +12,7 @@ const UpdateBlogs = () => {
       return res.json();
     }
   })
-  console.log(updatedblogs);
+  // console.log(updatedblogs);
 
   const handleUpdate = e =>{
     e.preventDefault();
@@ -38,7 +38,7 @@ const UpdateBlogs = () => {
     })
     .then(res=>res.json())
     .then(data =>{
-      console.log(data);
+      // console.log(data);
       if(data.modifiedCount > 0){
         Swal.fire({
           

@@ -7,7 +7,7 @@ import Header from "../Components/Navbar/Header";
 const Root = () => {
   return (
     <div>
-     <div className="min-h-screen bg-cover "  style={{backgroundImage:`url(/stacked-waves-haikei.svg)`}}>
+     <div>
      <Header></Header>
       <Outlet></Outlet>
       <Footer></Footer>

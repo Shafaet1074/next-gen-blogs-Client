@@ -1,6 +1,6 @@
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import img from '../../assets/loogin.png'
+import img from '../../assets/Animation - 1715833485055.gif'
 import { useContext } from 'react';
 import { AuthContext } from '../../Firbease/FirebaseProvider';
 import axios from 'axios';

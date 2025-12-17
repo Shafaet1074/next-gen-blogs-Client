@@ -14,7 +14,7 @@ const BlogDetails = () => {
   const [comments, setComments] = useState([]);
   const { id } = useParams();
   
-  console.log(id);
+  // console.log(id);
   const { data: blog, isLoading: blogLoading, error: blogError } = useQuery({
     queryKey: ['usersDetails'],  
     queryFn: async () => {

@@ -24,8 +24,8 @@ const AddBlogs = () => {
 
       
       const info={Title,OwnnerName,Category, PhotoURL, LongDescription,ShortDescription,OwnerPhotoURL,writerEmail}
-      console.log(info);
-      console.log(info);
+      // console.log(info);
+      // console.log(info);
       // fetch('https://nextgen-blogs.vercel.app/addblogs',{
       //   method: 'POST',
       //   headers:{

@@ -20,7 +20,7 @@ const AllBlogHome = ({blog}) => {
   // console.log(blog);
   const modifiedBlog = { ...blog, userEmail };
   
-   console.log(modifiedBlog);
+  //  console.log(modifiedBlog);
   const handleWishList = () =>{
 
     
@@ -35,7 +35,7 @@ const AllBlogHome = ({blog}) => {
     })
     .then(res=>res.json())
     .then(data =>{
-      console.log(data);
+      // console.log(data);
       if(data.insertedId){
         Swal.fire({
           

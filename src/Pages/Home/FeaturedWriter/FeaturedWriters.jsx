@@ -10,7 +10,7 @@ const FeaturedWriters = () => {
       return res.json();
     }
   })
-  console.log(writers);
+  // console.log(writers);
   return (
     <div className='space-y-5 lg:p-10 p-5'>
      <h1 className="text-center md:text-4xl text-xl font-bold text-green-700 "> Explore Our Blog Categories</h1>
